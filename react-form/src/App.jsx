@@ -31,7 +31,22 @@ function App() {
 
   return (
     <>
+      <div className="container">
+        <h1>React Form</h1>
+        <ul>
+          {articles.map((element, index) => (
+            <li key={index}>
+              {element}
+              <button onClick={() => deleteArticle(index)}>Delete</button>
+            </li>
+          ))}
+        </ul>
 
+        <form onSubmit={createArticle}>
+          <input type="text" value={newArticle} onChange={(e) => setNewArticle(e.target.value)} />
+          <button>Add to List</button>
+        </form>
+      </div>
     </>
   )
 }
