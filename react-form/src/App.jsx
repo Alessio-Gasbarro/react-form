@@ -1,33 +1,37 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
+const articlesArray = [
+  'Base Text 1',
+  'Base Text 2',
+  'Base Text 3',
+  'Base Text 4',
+  'Base Text 5',
+  'Base Text 6',
+  'Base Text 7',
+  'Base Text 8',
+  'Base Text 9',
+  'Base Text 10'
+]
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [articles, setArticles] = useState(articlesArray)
+  const [newArticle, setNewArticle] = useState('')
+
+  const createArticle = (e) => {
+    e.preventDefault()
+    setArticles([...articles, newArticle])
+    setNewArticle('')
+  }
+
+  const deleteArticle = (index) => {
+    const updatedArticles = [...articles]
+    updatedArticles.splice(index, 1)
+    setArticles(updatedArticles)
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
     </>
   )
 }
